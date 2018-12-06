@@ -40,10 +40,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aja": "^0.4.1",
-    "numeral": "^1.5.3",
+    "numeral": "^2.0.6",
     "profanity-filter": "^0.2.1",
     "q": "^1.5.1",
-    "request": "^2.74.0",
+    "request": "^2.88.0",
     "request-promise": "^4.0.2"
   }
 }
