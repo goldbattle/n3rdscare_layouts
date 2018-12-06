@@ -1,0 +1,33 @@
+<html>
+<head>
+	<link href="style/base.css" rel="stylesheet">
+	<link href="style/odometer-theme-minimal.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- our donation bar -->
+	<div class="total-raise-bar">
+		<span id="odometer1" class="odometer">0</span>
+		<span class="odometer-middle-text">/</span>
+		<span id="odometer2" class="odometer">0</span>
+	</div>
+
+	<!-- script that will animate the donation total -->
+	<script src="lib/odometer.min.js"></script>
+
+	<script>
+		// Listen for changes in the total donation amount
+		const repTotal = nodecg.Replicant('totalRep');
+		repTotal.on('change', (newValue, oldValue) => {
+			odometer1.innerText = newValue.raw;
+		});
+		// Listen for changes in the goal amount
+		const repGoal = nodecg.Replicant('goalRep');
+		repGoal.on('change', (newValue, oldValue) => {
+			odometer2.innerText = newValue.raw;
+		});
+	</script>
+
+
+</body>
+</html>

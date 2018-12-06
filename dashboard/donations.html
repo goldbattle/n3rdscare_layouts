@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/nodecg-toast/nodecg-toast.html">
+	<style>
+		paper-button.update{background:#4CAF50; color:#fff}
+	</style>
+</head>
+<body>
+
+<!-- toast notification -->
+<nodecg-toast id="toast"></nodecg-toast>
+
+<!-- information for the user -->
+<h2><span id="lblTotal">?</span> / <span id="lblGoal">?</span></h2>
+<h4>Next Goal: <span id="lblGoalText">Unknown</span></span></h4>
+
+<!-- button to trigger update -->
+<div class="layout horizontal" style="margin-bottom: 50px;">
+	<paper-button id="update" class="flex update">Force Update Total</paper-button>
+</div>
+
+<!-- script that will auto update the text, and callback for update button -->
+<script src="donations.js"></script>
+
+
+
+</body>
+</html>

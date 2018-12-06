@@ -1,0 +1,49 @@
+{
+  "name": "n3rdscare_layouts",
+  "version": "1.0.0",
+  "description": "Simple overlay for charity streams using the N3RDS.CARE website.",
+  "author": {
+    "name": "goldbattle",
+    "url": "https://github.com/goldbattle"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension"
+  ],
+  "keywords": [
+    "NodeCG",
+    "Extra Life",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": ">=0.9",
+    "dashboardPanels": [
+      {
+        "name": "donations",
+        "title": "Donations",
+        "width": 4,
+        "file": "donations.html",
+        "headerColor": "#283593"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "disp_total.html",
+        "width": 1920,
+        "height": 150,
+        "singleInstance": true
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aja": "^0.4.1",
+    "numeral": "^1.5.3",
+    "profanity-filter": "^0.2.1",
+    "q": "^1.5.1",
+    "request": "^2.74.0",
+    "request-promise": "^4.0.2"
+  }
+}

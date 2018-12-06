@@ -1,0 +1,30 @@
+.body {
+	margin: 0px;
+}
+
+
+.total-raise-bar {
+	font-size: 120px;
+	display:block;
+	width:1920px;
+	height:150px;
+	position: absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+	display: inline-block;
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom: 1;
+	*display: inline;
+	position: relative;
+	top: -25px;
+}
+
+
+.odometer-middle-text {
+	position: relative;
+	top: 20px;
+}
+
+
