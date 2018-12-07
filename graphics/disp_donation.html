@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link href="style/base.css" rel="stylesheet">
+	<link href="style/odometer-theme-minimal.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- our donation bar -->
+<div class="donation-bar">
+	<div class="box" id="donationtext"></div>
+</div>
+
+<!-- script that will animate the donation total -->
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script src="lib/jquery.boxfit.js"></script>
+
+<script>
+	// Listen for changes in the total donation amount
+	const donationRep = nodecg.Replicant('donationRep');
+	donationRep.on('change', (newValue, oldValue) => {
+		donationtext.innerText = newValue.name_censored+" "+newValue.formatted;
+		$("#donationtext").boxfit({align_center: false});
+	});
+	$("#donationtext").boxfit({align_center: false});
+</script>
+
+
+</body>
+</html>

@@ -9,9 +9,10 @@ const util = require('util');
 
 
 
-var API_URL_TOTAL = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/'; //Add participantID here
-var API_URL_THRESHOLD = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/incentives/thresholds/'; //Add participantID here
-var POLL_INTERVAL = 30000; // (ms)
+var API_URL_TOTAL = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/';
+var API_URL_THRESHOLD = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/incentives/thresholds/';
+var API_URL_DONATION = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/donations/?limit=1';
+var POLL_INTERVAL = 15000; // (ms)
 var updateInterval;
 
 
@@ -32,6 +33,13 @@ module.exports = function(nodecg) {
 				description: 'Unknown'
 			}
 	});
+	var donationRep = nodecg.Replicant('donationRep', {defaultValue:
+			{
+				raw: 0,
+				formatted: '$0.00',
+				name_censored: ''
+			}
+	});
 
 	// Call the API once to get starting value
 	// Also tell nodecg to call back if "updateTotal" is triggered
@@ -46,13 +54,13 @@ module.exports = function(nodecg) {
 		clearInterval(updateInterval);
 		updateInterval = setInterval(updateTotal, POLL_INTERVAL);
 
-		// DONATIONS: setup where we are going to call
-		var options_donations = {
+		// TOTAL: setup where we are going to call
+		var options_total = {
 			uri: API_URL_TOTAL,
 			json: true
 		};
-		// DONATIONS: our callback function
-		rp(options_donations)
+		// TOTAL: our callback function
+		rp(options_total)
 			.then(function (response) {
 				var el_data = response;
 				nodecg.log.debug('Total is ', el_data.amount);
@@ -74,7 +82,7 @@ module.exports = function(nodecg) {
 		// THRESHOLDS: our callback function
 		rp(options_thresholds)
 			.then(function (response) {
-				var el_data = response
+				var el_data = response;
 				// loop through and find the closest goal
 				var min_closest1 = 0.0;
 				var min_closesttext1 = 0.0;
@@ -97,6 +105,29 @@ module.exports = function(nodecg) {
 					raw: min_closest2,
 					formatted: numeral(min_closest2).format('$0,0.00'),
 					description: min_closesttext2
+				};
+				deferred.resolve(true);
+			})
+			.catch(function (err) {
+				// Delete failed...
+				deferred.reject(err);
+			});
+
+		// DONATIONS: setup where we are going to call
+		var options_donations = {
+			uri: API_URL_DONATION,
+			json: true
+		};
+		// DONATIONS: our callback function
+		rp(options_donations)
+			.then(function (response) {
+				var el_data = response;
+				nodecg.log.debug('Donation by',el_data[0].name_censored, ' - ', el_data[0].amount);
+				var name = el_data[0].name_censored;
+				donationRep.value = {
+					raw: el_data[0].amount,
+					formatted: numeral(el_data[0].amount).format('$0,0'),
+					name_censored: (name.length>12)? name.substr(0,12) : name
 				};
 				deferred.resolve(true);
 			})

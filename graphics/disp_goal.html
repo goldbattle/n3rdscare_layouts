@@ -18,8 +18,8 @@
 
 <script>
 	// Listen for changes in the total donation amount
-	const repTotal = nodecg.Replicant('totalRep');
-	repTotal.on('change', (newValue, oldValue) => {
+	const repGoal = nodecg.Replicant('goalRep');
+	repGoal.on('change', (newValue, oldValue) => {
 		odometer.innerText = newValue.raw;
 		window.fitText(document.getElementById("odom-outside"),0.6);
 	});

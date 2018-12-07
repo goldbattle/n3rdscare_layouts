@@ -1,30 +1,67 @@
-.body {
+body {
 	margin: 0px;
+	background-color: #19181a;
 }
 
 
 .total-raise-bar {
-	font-size: 120px;
+	font-size: 1px;
 	display:block;
-	width:1920px;
-	height:150px;
+	width:265px;
+	height:65px;
+	line-height:65px;
 	position: absolute;
-	top:0;
+	top:-2px;
 	left:0;
 	overflow:hidden;
-	display: inline-block;
+	/*display: inline-block;*/
 	vertical-align: middle;
 	*vertical-align: auto;
 	*zoom: 1;
 	*display: inline;
-	position: relative;
-	top: -25px;
+	/*position: relative;*/
+	/*top: -25px;*/
+	color: white;
+	text-align: left;
 }
 
+.donation-bar {
+	font-size: 1px;
+	display:block;
+	width:665px;
+	height:65px;
+	line-height:60px;
+	position: absolute;
+	top:-2px;
+	left:0;
+	overflow:hidden;
+	/*display: inline-block;*/
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom: 1;
+	*display: inline;
+	/*position: relative;*/
+	/*top: -25px;*/
+	color: white;
+	text-align: left;
+}
 
 .odometer-middle-text {
 	position: relative;
 	top: 20px;
 }
 
+.odometer-custom {
+	width: 100%;
+}
 
+.donationtext {
+	width: 100%;
+	text-align: left;
+}
+
+
+.box {
+	vertical-align: middle;
+	width: 100%;
+}

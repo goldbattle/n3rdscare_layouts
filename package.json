@@ -30,8 +30,20 @@
     "graphics": [
       {
         "file": "disp_total.html",
-        "width": 1920,
-        "height": 150,
+        "width": 265,
+        "height": 65,
+        "singleInstance": true
+      },
+      {
+        "file": "disp_goal.html",
+        "width": 265,
+        "height": 65,
+        "singleInstance": true
+      },
+      {
+        "file": "disp_donation.html",
+        "width": 665,
+        "height": 65,
         "singleInstance": true
       }
     ]
