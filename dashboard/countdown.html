@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/nodecg-toast/nodecg-toast.html">
+	<style>
+		paper-button.update{background:#4CAF50; color:#fff}
+		/*paper-input{font-size:1.5em}*/
+	</style>
+</head>
+<body>
+
+<!-- toast notification -->
+<nodecg-toast id="toast"></nodecg-toast>
+
+<!-- information for the user -->
+<h2>
+<paper-input label="Minutes Left:" id="lblMinLeft" type="number" value="0" always-float-label>
+</paper-input>
+</h2>
+
+<!-- button to trigger update -->
+<div class="layout horizontal" style="margin-bottom: 50px;">
+	<paper-button id="update" class="flex update">Update Countdown</paper-button>
+</div>
+
+<!-- script that will auto update the text, and callback for update button -->
+<script src="countdown.js"></script>
+
+
+
+</body>
+</html>

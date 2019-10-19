@@ -1,0 +1,58 @@
+<html>
+<head>
+	<link href="style/base.css" rel="stylesheet">
+	<link href="style/odometer-theme-minimal.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- our donation bar -->
+<div class="countdown-text">
+	<div id="odom-outside" class="odometer-custom">
+		<span id="odometer" class="odometer"></span>
+	</div>
+</div>
+
+<!-- script that will animate the donation total -->
+<script src="lib/odometer.min.js"></script>
+<script src="lib/fittext.js"></script>
+
+<script>
+
+	// Disable default creation
+	window.odometerOptions = {
+		auto: false
+	}
+
+	// Setup the odometer format
+	var counter = new Odometer({
+		el: odometer,
+		value: 0,
+		format: '(:dd)',
+		minIntegerLen: 6,
+		duration: 3000,
+	});
+	counter.update(0)
+
+	// Listen for changes in the total donation amount
+	const repTotal = nodecg.Replicant('countdownRep');
+	repTotal.on('change', (newValue, oldValue) => {
+
+		var seconds = 60*newValue;
+		var days = Math.floor(seconds / (3600*24));
+		seconds  -= days*3600*24;
+		var hrs   = Math.floor(seconds / 3600);
+		seconds  -= hrs*3600;
+		var mnts = Math.floor(seconds / 60);
+		seconds  -= mnts*60;
+		console.log(days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds");
+
+
+		odometer.innerText = days*10000+hrs*100+mnts;
+		window.fitText(document.getElementById("odom-outside"),0.6);
+	});
+	window.fitText(document.getElementById("odom-outside"),0.6);
+</script>
+
+
+</body>
+</html>

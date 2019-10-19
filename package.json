@@ -25,6 +25,13 @@
         "width": 4,
         "file": "donations.html",
         "headerColor": "#283593"
+      },
+      {
+        "name": "countdown",
+        "title": "Countdown",
+        "width": 4,
+        "file": "countdown.html",
+        "headerColor": "#283593"
       }
     ],
     "graphics": [
@@ -32,19 +39,31 @@
         "file": "disp_total.html",
         "width": 265,
         "height": 65,
-        "singleInstance": true
+        "singleInstance": false
       },
       {
         "file": "disp_goal.html",
         "width": 265,
         "height": 65,
-        "singleInstance": true
+        "singleInstance": false
+      },
+      {
+        "file": "disp_progressbar.html",
+        "width": 1711,
+        "height": 29,
+        "singleInstance": false
       },
       {
         "file": "disp_donation.html",
         "width": 665,
         "height": 65,
-        "singleInstance": true
+        "singleInstance": false
+      },
+      {
+        "file": "disp_countdown.html",
+        "width": 180,
+        "height": 65,
+        "singleInstance": false
       }
     ]
   },

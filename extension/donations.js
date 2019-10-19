@@ -9,9 +9,9 @@ const util = require('util');
 
 
 
-var API_URL_TOTAL = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/';
-var API_URL_THRESHOLD = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/incentives/thresholds/';
-var API_URL_DONATION = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2018/donations/?limit=1';
+var API_URL_TOTAL = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2019/';
+var API_URL_THRESHOLD = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2019/incentives/thresholds/';
+var API_URL_DONATION = 'https://donate.n3rds.care/api/v1/events/mindcrack-marathon-winter-2019/donations/?limit=1';
 var POLL_INTERVAL = 15000; // (ms)
 var updateInterval;
 

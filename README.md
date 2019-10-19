@@ -9,6 +9,9 @@ Please pardon the unclean code as I do not normally work within Javascript/Node 
 ### Features:
 - Total donation amount
 - Goal donation amount
+- Last donation received
+- Progress bar between raised and current goal
+- Simple countdown display
 - Auto updating, and animated when donations are received
 
 

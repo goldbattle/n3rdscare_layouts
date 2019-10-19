@@ -1,0 +1,99 @@
+<html>
+<head>
+	<link href="style/base.css" rel="stylesheet">
+	<style type="text/css">
+		.percentage-bar {
+			font-size: 1px;
+			display:block;
+			width:1711px;
+			height:29px;
+			line-height:29px;
+			position: absolute;
+			overflow:hidden;
+			/*display: inline-block;*/
+			vertical-align: middle;
+			*vertical-align: auto;
+			*zoom: 1;
+			*display: inline;
+			/*position: relative;*/
+			/*top: -25px;*/
+			color: white;
+			text-align: left;
+			background: #5f780d;
+		}
+		#bar {
+			width:37%;
+			height:29px;
+			border-right: 1px solid #000000;
+			background: #8fd100;
+			transition: width 1.5s ease-in-out;
+		}
+		#text {
+			color: #FFF;
+			font-size: 20px;
+			position: relative;
+			text-align: right;
+			float: right;
+			margin-right: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<!-- script that will handle text scaling -->
+<script src="lib/fittext.js"></script>
+
+
+
+<!-- our donation bar -->
+<div class="percentage-bar">
+	<div id="bar">
+		<span id="text"></span>
+	</div>
+</div>
+
+
+
+<script>
+
+	// Saved last variables
+	var last_goal = 0.0;
+	var last_raised = 0.0;
+
+
+	// Function that updates the progress bar size
+	function update_progress() {
+		var precent;
+		if(last_goal === 0) precent = 0.0;
+		else precent = Math.round((last_raised*100)/last_goal);
+		if(precent > 100) precent = 100.0;
+		document.getElementById("bar").style.width=precent+'%';
+		document.getElementById("text").innerHTML=precent+'%';
+		//window.fitText(document.getElementById("text"),0.6);
+		console.log("percent = "+precent)
+	}
+
+
+	// Listen for changes in the total donation amount
+	const repGoal = nodecg.Replicant('goalRep');
+	repGoal.on('change', (newValue, oldValue) => {
+		if(newValue.raw != null) last_goal = newValue.raw;
+		update_progress();
+	});
+	const donationRep = nodecg.Replicant('totalRep');
+	donationRep.on('change', (newValue, oldValue) => {
+		if(newValue.raw != null) last_raised = newValue.raw;
+		update_progress();
+	});
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
